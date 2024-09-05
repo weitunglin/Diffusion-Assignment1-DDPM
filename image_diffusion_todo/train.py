@@ -11,7 +11,8 @@ from dotmap import DotMap
 from model import DiffusionModule
 from network import UNet
 from pytorch_lightning import seed_everything
-from scheduler import DDIMScheduler, DDPMScheduler
+# from scheduler import DDIMScheduler, DDPMScheduler
+from scheduler import DDPMScheduler
 from torchvision.transforms.functional import to_pil_image
 from tqdm import tqdm
 
@@ -72,8 +73,8 @@ def main(args):
         )
     else:
         raise ValueError(f"Invalid sample method {args.sample_method}")
-    if isinstance(var_scheduler, DDIMScheduler):
-        var_scheduler.set_timesteps(20)  # 20 steps are enough in the case of DDIM.
+    # if isinstance(var_scheduler, DDIMScheduler):
+        # var_scheduler.set_timesteps(20)  # 20 steps are enough in the case of DDIM.
 
     network = UNet(
         T=config.num_diffusion_train_timesteps,
