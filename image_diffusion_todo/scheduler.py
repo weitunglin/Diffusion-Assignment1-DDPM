@@ -148,7 +148,7 @@ class DDPMScheduler(BaseScheduler):
             return out.reshape(*reshape)
 
         alphas_cumprod_t = extract(self.alphas_cumprod, t, x_0)
-        x_t = alphas_cumprod_t.sqrt() * x_0 + (1.0 - alphas_cumprod_t) * eps
+        x_t = alphas_cumprod_t.sqrt() * x_0 + (1.0 - alphas_cumprod_t).sqrt() * eps
         #######################
 
         return x_t, eps
